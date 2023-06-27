@@ -1,2 +1,2 @@
 # fizzymana
-Open-Source Particle for GameMaker
+Open-Source Particle Generator Tool for GameMaker
