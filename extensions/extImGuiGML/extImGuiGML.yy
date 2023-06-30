@@ -2,7 +2,7 @@
   "resourceType": "GMExtension",
   "resourceVersion": "1.2",
   "name": "extImGuiGML",
-  "androidactivityinject": null,
+  "androidactivityinject": "",
   "androidclassname": "",
   "androidcodeinjection": "",
   "androidinject": "",
@@ -878,7 +878,7 @@
   "packageId": "",
   "parent": {
     "name": "ImGuiGML",
-    "path": "folders/ImGuiGML.yy",
+    "path": "folders/Extensions/ImGuiGML.yy",
   },
   "productId": "",
   "sourcedir": "",

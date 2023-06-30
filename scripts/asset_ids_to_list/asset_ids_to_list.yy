@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "imguigml_read_me",
+  "name": "asset_ids_to_list",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Extensions/ImGuiGML/Scripts.yy",
+    "name": "Functions",
+    "path": "folders/ImGuiGML Wrapper/Functions.yy",
   },
 }

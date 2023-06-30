@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "imguigml_read_me",
+  "name": "ImguiWindowSettings",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Extensions/ImGuiGML/Scripts.yy",
+    "name": "Windows",
+    "path": "folders/ImGuiGML Wrapper/Windows.yy",
   },
 }

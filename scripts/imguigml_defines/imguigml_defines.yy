@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Scripts",
-    "path": "folders/ImGuiGML/Scripts.yy",
+    "path": "folders/Extensions/ImGuiGML/Scripts.yy",
   },
 }

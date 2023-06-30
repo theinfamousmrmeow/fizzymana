@@ -15,7 +15,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "ImGuiGML",
-    "path": "folders/ImGuiGML.yy",
+    "path": "folders/Extensions/ImGuiGML.yy",
   },
   "parentObjectId": null,
   "persistent": true,

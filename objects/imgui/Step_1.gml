@@ -4,7 +4,7 @@
 ///@extensionizer { "docs": false } 
 	/////////////
 #region Update Input
-	var mb     = global.__imgui_mouse_buttons; 
+	var MB     = global.__imgui_mouse_buttons; 
 	var num_mouse_buttons = global.__imgui_num_mouse_buttons;
 
 	var imkeys = global.__imgui_keys; 
@@ -72,7 +72,7 @@
 	buffer_write(Input_buffer, buffer_f32, my);
 
 	for (var mouse_button_index = 0; mouse_button_index < num_mouse_buttons; ++mouse_button_index) {
-	  var but = mb[mouse_button_index];
+	  var but = MB[mouse_button_index];
 	  buffer_write(Input_buffer, buffer_u8, Should_update_cursor && mouse_check_button(but) ? 1 : 0);
 	}
 

@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "imguigml_read_me",
+  "name": "ImguiFileMenu",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Extensions/ImGuiGML/Scripts.yy",
+    "name": "Menus",
+    "path": "folders/ImGuiGML Wrapper/Menus.yy",
   },
 }

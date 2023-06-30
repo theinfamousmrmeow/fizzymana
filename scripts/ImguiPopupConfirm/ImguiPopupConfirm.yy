@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "imguigml_read_me",
+  "name": "ImguiPopupConfirm",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Extensions/ImGuiGML/Scripts.yy",
+    "name": "Popups",
+    "path": "folders/ImGuiGML Wrapper/Popups.yy",
   },
 }

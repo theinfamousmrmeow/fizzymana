@@ -4,7 +4,7 @@
   "name": "shd_imgui",
   "parent": {
     "name": "Shaders",
-    "path": "folders/ImGuiGML/Shaders.yy",
+    "path": "folders/Extensions/ImGuiGML/Shaders.yy",
   },
   "type": 1,
 }
