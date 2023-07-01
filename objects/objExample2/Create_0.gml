@@ -32,6 +32,21 @@ shape_items = [
 ]
 //Particle Shape Values
 shape_selected = shape_items[0];
+
+//Sprite Information
+sprite_file = undefined;
+sprite_subframe_val = 0;
+sprite_remove_background = true;
+sprite_smooth = true;
+sprite_x_origin = 0;
+sprite_y_origin = 0;
+
+//Sprite Particle Information
+sprite_animated = false;
+sprite_stretched = false;
+sprite_random_frame = false;
+
+//Particle Alpha Values
 part_alpha_min = random_range(0.000,1.000);
 part_alpha_mid = random_range(0.000,1.000);
 part_alpha_max = random_range(0.000,1.000);
@@ -72,8 +87,7 @@ part_orientation_wobble		= random_range(-5.000,5.000);
 part_gravity_amount		= random_range(0.000,15.000);
 part_gravity_direction	= random_range(0.000,359.000);
 
-//colors
-
+// Particle Colors
 // Additive
 additive_items = [
 	"no",
@@ -88,6 +102,17 @@ color_type_items = [
 color_type_selected = color_type_items[0];
 color_a = irandom_range(c_white,c_black)
 color_b = irandom_range(c_white,c_black)
+
+//Export Information
+export_items = [
+	"GML",
+	"GMC Wrapper",
+	"GML Raptor"
+]
+export_selected = export_items[0];
+export_destination = undefined;
+
+emitters = [];
 
 col = c_blue;                     // for TextColored
 col2 = c_white;                   // for Image & ColorPicker

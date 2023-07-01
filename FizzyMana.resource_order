@@ -10,6 +10,7 @@
     {"name":"rmExample","order":1,"path":"rooms/rmExample/rmExample.yy",},
     {"name":"sprExample","order":2,"path":"sprites/sprExample/sprExample.yy",},
     {"name":"ImGui_Misc","order":2,"path":"scripts/ImGui_Misc/ImGui_Misc.yy",},
+    {"name":"ParticleSystem1","order":3,"path":"particles/ParticleSystem1/ParticleSystem1.yy",},
     {"name":"sprExample2","order":3,"path":"sprites/sprExample2/sprExample2.yy",},
   ],
 }
