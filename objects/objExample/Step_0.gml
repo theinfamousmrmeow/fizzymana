@@ -46,10 +46,10 @@ if (ImGui.BeginMenu("Windows")) {
 ImGui.EndMainMenuBar();
 
 //Bullshit Window
-if (bullshit_open) {
+if (particle_info_open) {
 	ImGui.SetNextWindowSize(room_width / 3, room_height, ImGuiCond.Once);
-	var ret = ImGui.Begin("Bullshit Example", bullshit_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
-	bullshit_open = ret & ImGuiReturnMask.Pointer;
+	var ret = ImGui.Begin("Bullshit Example", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
+	particle_info_open = ret & ImGuiReturnMask.Pointer;
 	
 	ImGui.TextColored("Developed by WIZARDS AGE!", c_aqua);
 	ImGui.End();

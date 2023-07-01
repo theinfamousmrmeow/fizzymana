@@ -16,8 +16,6 @@
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LICENSE.txt","CopyToMask":-1,"filePath":"datafiles/fonts",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LICENSE.txt","CopyToMask":-1,"filePath":"datafiles/fonts",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Roboto-Regular.ttf","CopyToMask":-1,"filePath":"datafiles/fonts",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Roboto-Regular.ttf","CopyToMask":-1,"filePath":"datafiles/fonts",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"pixel04b24.ttf","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sprite_add_test.png","CopyToMask":-1,"filePath":"datafiles",},
@@ -30,6 +28,7 @@
   "resources": [
     {"id":{"name":"ImGui_GM","path":"extensions/ImGui_GM/ImGui_GM.yy",},},
     {"id":{"name":"shdImGui","path":"shaders/shdImGui/shdImGui.yy",},},
+    {"id":{"name":"objExample2","path":"objects/objExample2/objExample2.yy",},},
     {"id":{"name":"rmExample","path":"rooms/rmExample/rmExample.yy",},},
     {"id":{"name":"sprExample","path":"sprites/sprExample/sprExample.yy",},},
     {"id":{"name":"ImGui_Misc","path":"scripts/ImGui_Misc/ImGui_Misc.yy",},},

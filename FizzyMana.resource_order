@@ -6,6 +6,7 @@
   "ResourceOrderSettings": [
     {"name":"ImGui_GM","order":1,"path":"extensions/ImGui_GM/ImGui_GM.yy",},
     {"name":"shdImGui","order":3,"path":"shaders/shdImGui/shdImGui.yy",},
+    {"name":"objExample2","order":4,"path":"objects/objExample2/objExample2.yy",},
     {"name":"rmExample","order":1,"path":"rooms/rmExample/rmExample.yy",},
     {"name":"sprExample","order":2,"path":"sprites/sprExample/sprExample.yy",},
     {"name":"ImGui_Misc","order":2,"path":"scripts/ImGui_Misc/ImGui_Misc.yy",},

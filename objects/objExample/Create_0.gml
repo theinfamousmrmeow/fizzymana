@@ -5,7 +5,7 @@ randomize();
 
 main_open = true;
 demo_open = true;
-bullshit_open = true;
+particle_info_open = true;
 header_visible = true;
 enable_docking = false;
 _static = undefined;
