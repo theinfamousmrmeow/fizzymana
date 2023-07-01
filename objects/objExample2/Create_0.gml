@@ -115,11 +115,59 @@ export_destination = undefined;
 //Emitter Information
 emitter_counter = 4
 emitters = [
-	"Emitter_1",
-	"Emitter_2",
-	"Emitter_3",
+	{
+		key : 1,
+		name:"Emitter_1",
+		width: 96.000,
+		height: 96.000,
+		shape: "Ellipse",
+		distribution: "Linear",
+		particle_count: 1,
+		stream: true,
+	},
+	{
+		key: 2,
+		name:"Emitter_2",
+		width: 96.000,
+		height: 96.000,
+		shape: "Ellipse",
+		distribution: "Linear",
+		particle_count: 1,
+		stream: true,
+	},
+	{
+		key: 3,
+		name:"Emitter_3",
+		width: 96.000,
+		height: 96.000,
+		shape: "Ellipse",
+		distribution: "Linear",
+		particle_count: 1,
+		stream: true,
+	}
 ];
+emitter_dummy = {
+	key: -1,
+	name:"Dummy",
+	width: 96.000,
+	height: 96.000,
+	shape: "Ellipse",
+	distribution: "Linear",
+	particle_count: 1,
+	stream: true,
+}
 emitter_selected = emitters[0];
+emitter_shapes = [
+	"Diamond",
+	"Ellipse",
+	"Line",
+	"Rectangle"
+]
+emitter_distributions = [
+	"Linear",
+	"Gaussian",
+	"Inverse Gaussian"
+]
 
 col = c_blue;                     // for TextColored
 col2 = c_white;                   // for Image & ColorPicker
