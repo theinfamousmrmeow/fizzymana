@@ -718,8 +718,6 @@ if (particle_info_open) {
 	}
 	ImGui.End();
 
-}
-
 	ImGui.SetNextWindowSize(room_width/4, room_height-200, ImGuiCond.Once);
 	ImGui.Begin("Emitter Information", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
 		ImGui.Text("Emitters");
@@ -845,3 +843,4 @@ if (particle_info_open) {
 		ImGui.EndDisabled()
 
 	ImGui.End();
+	}
