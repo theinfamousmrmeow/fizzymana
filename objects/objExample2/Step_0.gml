@@ -493,6 +493,7 @@ if (particle_info_open) {
 					if (ImGui.SmallButton("random")){
 						color_a = irandom_range(c_white,c_black)
 					};
+					ImGui.PopID();
 					ImGui.Indent(20);
 					ImGui.PushID("ColorAEditor");
 					color_a = ImGui.ColorEdit3("", color_a);
@@ -507,6 +508,7 @@ if (particle_info_open) {
 					if (ImGui.SmallButton("random")){
 						color_b = irandom_range(c_white,c_black)
 					};
+					ImGui.PopID();
 					ImGui.Indent(20);
 					ImGui.PushID("ColorBEditor");
 					color_b = ImGui.ColorEdit3("", color_b);
@@ -518,7 +520,7 @@ if (particle_info_open) {
                 }
 				if (ImGui.BeginTabItem("Export"))
                 {
-                    ImGui.Text("This is the Cucumber tab!\nblah blah blah blah blah");
+                    ImGui.Text("Export tab");
                     ImGui.EndTabItem();
                 }
 				
