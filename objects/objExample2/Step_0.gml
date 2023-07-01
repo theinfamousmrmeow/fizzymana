@@ -44,7 +44,9 @@ ImGui.EndMainMenuBar();
 
 // Particle Info Window
 if (particle_info_open) {
-
+	var space_id = ImGui.DockSpaceOverViewport()
+	ImGui.SetNextWindowDockID(space_id,ImGuiCond.FirstUseEver);
+	//show_message(ImGui.IsWindowDocked());
 	ImGui.SetNextWindowSize(room_width / 4, room_height, ImGuiCond.Once);
 	//ImGui.SetNextWindowPos(ImGui.GetContentRegionMaxX(),0,ImGuiCond.Once);
 	
