@@ -1,5 +1,5 @@
 /// Docking
-if (enable_docking) ImGui.DockSpaceOverViewport();
+if (enable_docking) viewport_dock = ImGui.DockSpaceOverViewport(ImGuiDockNodeFlags.NoDockingInCentralNode);
 
 // Setup
 if (!surface_exists(surf)) {
@@ -44,8 +44,8 @@ ImGui.EndMainMenuBar();
 
 // Particle Info Window
 if (particle_info_open) {
-	var space_id = ImGui.DockSpaceOverViewport()
-	ImGui.SetNextWindowDockID(space_id,ImGuiCond.FirstUseEver);
+	var space_id = viewport_dock
+	//ImGui.SetNextWindowDockID(space_id,ImGuiCond.FirstUseEver);
 	//show_message(ImGui.IsWindowDocked());
 	ImGui.SetNextWindowSize(room_width / 4, room_height, ImGuiCond.Once);
 	//ImGui.SetNextWindowPos(ImGui.GetContentRegionMaxX(),0,ImGuiCond.Once);
@@ -722,6 +722,7 @@ if (particle_info_open) {
 
 	ImGui.SetNextWindowSize(room_width/4, room_height-200, ImGuiCond.Once);
 	ImGui.Begin("Emitter Information", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
+		//if ImGui.IsWindowDocked() show_message(ImGui.GetWindowDockID());
 		ImGui.Text("Emitters");
 		var __list_width = ImGui.GetContentRegionAvailX();
 		var __list_height = ImGui.GetContentRegionAvailY();

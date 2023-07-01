@@ -1,5 +1,5 @@
 /// Docking
-if (enable_docking) ImGui.DockSpaceOverViewport();
+if (enable_docking) viewport_dock = ImGui.DockSpaceOverViewport(ImGuiDockNodeFlags.NoDockingInCentralNode);
 
 // Setup
 if (!surface_exists(surf)) {
