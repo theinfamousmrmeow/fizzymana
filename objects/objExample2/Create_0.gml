@@ -112,7 +112,14 @@ export_items = [
 export_selected = export_items[0];
 export_destination = undefined;
 
-emitters = [];
+//Emitter Information
+emitter_counter = 4
+emitters = [
+	"Emitter_1",
+	"Emitter_2",
+	"Emitter_3",
+];
+emitter_selected = emitters[0];
 
 col = c_blue;                     // for TextColored
 col2 = c_white;                   // for Image & ColorPicker

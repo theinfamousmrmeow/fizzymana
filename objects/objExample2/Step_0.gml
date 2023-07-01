@@ -721,12 +721,38 @@ if (particle_info_open) {
 }
 	var width = ImGui.GetContentRegionAvailX(), 
 	height =ImGui.GetContentRegionAvailY();
-	ImGui.SetNextWindowSize(width, height, ImGuiCond.Once);
+	ImGui.SetNextWindowSize(width, room_height-200, ImGuiCond.Once);
 	ImGui.Begin("Emitter Information", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
 		ImGui.Text("Emitters");
 		var __list_width =ImGui.GetContentRegionAvailX();
 		var __list_height = ImGui.GetContentRegionAvailY();
-		if(ImGui.BeginListBox("",__list_width ,__list_height )){
+
+		if(ImGui.BeginListBox("",__list_width ,__list_height-64 )){
+			for (var __n = 0; __n < array_length(emitters); __n++){
+				var __is_selected = (emitter_selected == emitters[__n]);
+				if (ImGui.Selectable(emitters[__n], __is_selected)){
+					emitter_selected = emitters[__n];
+				}
+				if (__is_selected){
+					ImGui.SetItemDefaultFocus();
+				}
+			}
 			ImGui.EndListBox()
 		}
+		ImGui.PushID("AddEmitter");
+			if (ImGui.Button(" + ")){
+				array_push(emitters,string("Emitter_{0}", emitter_counter++));
+			};
+		ImGui.PopID();
+		ImGui.SameLine();
+		ImGui.PushID("RemoveEmitter");
+			if (ImGui.Button(" - ")){
+				var __current_index = array_find_index(emitters,function(_val){return _val == emitter_selected})
+				array_delete(emitters,__current_index,1);
+				emitter_selected = array_length(emitters)>0
+								   ? emitters[0]
+								   : undefined;
+			};
+		ImGui.PopID();
+		
 	ImGui.End();
