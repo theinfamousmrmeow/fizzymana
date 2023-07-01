@@ -48,6 +48,7 @@ ImGui.EndMainMenuBar();
 //Bullshit Window
 if (particle_info_open) {
 	ImGui.SetNextWindowSize(room_width / 3, room_height, ImGuiCond.Once);
+	ImGui.SetNextWindowPos(room_width - (room_width/3),0);
 	var ret = ImGui.Begin("Bullshit Example", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
 	particle_info_open = ret & ImGuiReturnMask.Pointer;
 	

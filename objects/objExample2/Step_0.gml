@@ -45,10 +45,12 @@ ImGui.EndMainMenuBar();
 // Particle Info Window
 if (particle_info_open) {
 	var space_id = viewport_dock
+
+	
 	//ImGui.SetNextWindowDockID(space_id,ImGuiCond.FirstUseEver);
 	//show_message(ImGui.IsWindowDocked());
 	ImGui.SetNextWindowSize(room_width / 4, room_height, ImGuiCond.Once);
-	//ImGui.SetNextWindowPos(ImGui.GetContentRegionMaxX(),0,ImGuiCond.Once);
+	ImGui.SetNextWindowPos(room_width - (room_width/4),16,ImGuiCond.Once);
 	
 	var ret = ImGui.Begin("Particle Information", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
 	particle_info_open = ret & ImGuiReturnMask.Pointer;
@@ -720,7 +722,8 @@ if (particle_info_open) {
 	}
 	ImGui.End();
 
-	ImGui.SetNextWindowSize(room_width/4, room_height-200, ImGuiCond.Once);
+	ImGui.SetNextWindowSize(room_width/4, room_height, ImGuiCond.Once);
+	ImGui.SetNextWindowPos(0,16,ImGuiCond.Once);
 	ImGui.Begin("Emitter Information", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
 		//if ImGui.IsWindowDocked() show_message(ImGui.GetWindowDockID());
 		ImGui.Text("Emitters");
