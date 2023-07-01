@@ -3,7 +3,6 @@ ImGui.ConfigFlagToggle(ImGuiConfigFlags.DockingEnable);
 
 randomize();
 
-demo_open = true;
 particle_info_open = true;
 header_visible = true;
 enable_docking = true;
@@ -73,7 +72,22 @@ part_orientation_wobble		= random_range(-5.000,5.000);
 part_gravity_amount		= random_range(0.000,15.000);
 part_gravity_direction	= random_range(0.000,359.000);
 
+//colors
 
+// Additive
+additive_items = [
+	"no",
+	"yes"
+]
+additive_selected = additive_items[0];
+//Color Types
+color_type_items = [
+	"Gradient",
+	"Mix"
+]
+color_type_selected = color_type_items[0];
+color_a = irandom_range(c_white,c_black)
+color_b = irandom_range(c_white,c_black)
 
 col = c_blue;                     // for TextColored
 col2 = c_white;                   // for Image & ColorPicker

@@ -38,7 +38,6 @@ if (ImGui.BeginPopupModal("Exit?", undefined, ImGuiWindowFlags.NoResize)) {
 }
 
 if (ImGui.BeginMenu("Windows")) {
-	if (ImGui.MenuItem("Show Demo Window", undefined, undefined, !demo_open)) demo_open = true;	
 	ImGui.EndMenu();
 }
 ImGui.EndMainMenuBar();
@@ -65,7 +64,6 @@ if (particle_info_open) {
 					if (ImGui.SmallButton("random")){ 
 						shape_selected = shape_items[irandom(array_length(shape_items)-1)]
 					};
-					ImGui.Separator();
 					ImGui.PushItemWidth(width)
 					
 					if(ImGui.BeginCombo(" ",shape_selected,ImGuiComboFlags.None)){
@@ -446,7 +444,76 @@ if (particle_info_open) {
                 }
 				if (ImGui.BeginTabItem("Colors"))
                 {
-                    ImGui.Text("This is the Cucumber tab!\nblah blah blah blah blah");
+					
+					//Particle Color Additive Combo box
+                    ImGui.NewLine()
+					ImGui.Text("Additive");
+					ImGui.Indent(20);
+					ImGui.PushID("AdditiveValueComboBox");
+					if(ImGui.BeginCombo(" ",additive_selected,ImGuiComboFlags.None)){
+						for (var __n = 0; __n < array_length(additive_items); __n++){
+						    var __is_selected = (additive_selected == additive_items[__n]);
+						    if (ImGui.Selectable(additive_items[__n], __is_selected)){
+						        additive_selected = additive_items[__n];
+							}
+						    if (__is_selected){
+						        ImGui.SetItemDefaultFocus();
+							}
+						}
+						ImGui.EndCombo();
+					}
+					ImGui.PopID();
+					ImGui.Unindent();
+					
+					//Particle Color Type Combo box
+					ImGui.NewLine()
+					ImGui.Text("Color Type");
+					ImGui.Indent(20);
+					ImGui.PushID("ColorTypeValueComboBox");
+					if(ImGui.BeginCombo(" ",color_type_selected,ImGuiComboFlags.None)){
+						for (var __n = 0; __n < array_length(color_type_items); __n++){
+						    var __is_selected = (color_type_selected == color_type_items[__n]);
+						    if (ImGui.Selectable(color_type_items[__n], __is_selected)){
+						        color_type_selected = color_type_items[__n];
+							}
+						    if (__is_selected){
+						        ImGui.SetItemDefaultFocus();
+							}
+						}
+						ImGui.EndCombo();
+					}
+					ImGui.PopID();
+					ImGui.Unindent();
+					
+					//Particle Color A Editor
+					ImGui.NewLine()
+					ImGui.Text("Color A");
+					ImGui.SameLine();
+					ImGui.PushID("ColorAValueRandomize");
+					if (ImGui.SmallButton("random")){
+						color_a = irandom_range(c_white,c_black)
+					};
+					ImGui.Indent(20);
+					ImGui.PushID("ColorAEditor");
+					color_a = ImGui.ColorEdit3("", color_a);
+					ImGui.PopID();
+					ImGui.Unindent();
+					
+					//Particle Color B Editor
+					ImGui.NewLine()
+					ImGui.Text("Color B");
+					ImGui.SameLine();
+					ImGui.PushID("ColorBValueRandomize");
+					if (ImGui.SmallButton("random")){
+						color_b = irandom_range(c_white,c_black)
+					};
+					ImGui.Indent(20);
+					ImGui.PushID("ColorBEditor");
+					color_b = ImGui.ColorEdit3("", color_b);
+					show_debug_message(color_b);
+					ImGui.PopID();
+					ImGui.Unindent();
+					
                     ImGui.EndTabItem();
                 }
 				if (ImGui.BeginTabItem("Export"))
@@ -454,12 +521,9 @@ if (particle_info_open) {
                     ImGui.Text("This is the Cucumber tab!\nblah blah blah blah blah");
                     ImGui.EndTabItem();
                 }
+				
                 ImGui.EndTabBar();
             }
 	}
 	ImGui.End();
-}
-
-if (demo_open) {
-	demo_open = ImGui.ShowDemoWindow(demo_open);	
 }
