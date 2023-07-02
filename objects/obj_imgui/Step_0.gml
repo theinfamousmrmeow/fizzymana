@@ -59,11 +59,11 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 			};
 			ImGui.Indent(__indent);
 			ImGui.PushItemWidth(ImGui.GetContentRegionAvailX()-__indent)
-			if(ImGui.BeginCombo(" ",emitter_selected.part_shape,ImGuiComboFlags.None)){
+			if(ImGui.BeginCombo(" ",emitter_selected.part_shape.name,ImGuiComboFlags.None)){
 
 				for (var __n = 0; __n < array_length(shape_items); __n++){
-					var __is_selected = (emitter_selected.part_shape == shape_items[__n]);
-					if (ImGui.Selectable(shape_items[__n], __is_selected)){
+					var __is_selected = (emitter_selected.part_shape.key == shape_items[__n].key);
+					if (ImGui.Selectable(shape_items[__n].name, __is_selected)){
 						emitter_selected.part_shape = shape_items[__n];
 					}
 					if (__is_selected){
@@ -75,7 +75,7 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 			ImGui.PopItemWidth()
 			ImGui.Unindent();
 			//Sprite Information
-			if(emitter_selected.part_shape=="Sprite"){
+			if(emitter_selected.part_shape.name=="Sprite"){
 				ImGui.NewLine()
 				ImGui.Text("Sprite Information");
 				ImGui.SameLine();
@@ -594,10 +594,10 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 			ImGui.Text("Additive");
 			ImGui.Indent(__indent);
 			ImGui.PushID("AdditiveValueComboBox");
-				if(ImGui.BeginCombo(" ",emitter_selected.part_additive,ImGuiComboFlags.None)){
+				if(ImGui.BeginCombo(" ",emitter_selected.part_additive.name,ImGuiComboFlags.None)){
 					for (var __n = 0; __n < array_length(additive_items); __n++){
-						var __is_selected = (emitter_selected.part_additive == additive_items[__n]);
-						if (ImGui.Selectable(additive_items[__n], __is_selected)){
+						var __is_selected = (emitter_selected.part_additive.key == additive_items[__n].key);
+						if (ImGui.Selectable(additive_items[__n].name, __is_selected)){
 							emitter_selected.part_additive = additive_items[__n];
 						}
 						if (__is_selected){
@@ -614,10 +614,10 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 			ImGui.Text("Color Type");
 			ImGui.Indent(__indent);
 			ImGui.PushID("ColorTypeValueComboBox");
-				if(ImGui.BeginCombo(" ",emitter_selected.part_color_type,ImGuiComboFlags.None)){
+				if(ImGui.BeginCombo(" ",emitter_selected.part_color_type.name,ImGuiComboFlags.None)){
 					for (var __n = 0; __n < array_length(color_type_items); __n++){
-						var __is_selected = (emitter_selected.part_color_type == color_type_items[__n]);
-						if (ImGui.Selectable(color_type_items[__n], __is_selected)){
+						var __is_selected = (emitter_selected.part_color_type.key == color_type_items[__n].key);
+						if (ImGui.Selectable(color_type_items[__n].name, __is_selected)){
 							emitter_selected.part_color_type = color_type_items[__n];
 						}
 						if (__is_selected){
@@ -790,10 +790,10 @@ ImGui.Begin("Emitter Information", undefined, ImGuiWindowFlags.None, ImGuiReturn
 	ImGui.Indent(__indent);
 	ImGui.PushID("EmitterShape");
 		ImGui.PushItemWidth(ImGui.GetContentRegionAvailX()-__indent);
-		if(ImGui.BeginCombo("",emitter_selected.shape,ImGuiComboFlags.None)){
+		if(ImGui.BeginCombo("",emitter_selected.shape.name,ImGuiComboFlags.None)){
 			for (var __n = 0; __n < array_length(emitter_shapes); __n++){
-				var __is_selected = (emitter_selected.shape == emitter_shapes[__n]);
-				if (ImGui.Selectable(emitter_shapes[__n], __is_selected)){
+				var __is_selected = (emitter_selected.shape.key == emitter_shapes[__n].key);
+				if (ImGui.Selectable(emitter_shapes[__n].name, __is_selected)){
 					emitter_selected.shape = emitter_shapes[__n];
 				}
 				if (__is_selected){
@@ -811,10 +811,10 @@ ImGui.Begin("Emitter Information", undefined, ImGuiWindowFlags.None, ImGuiReturn
 	ImGui.Indent(__indent);
 	ImGui.PushID("EmitterDistribution");
 		ImGui.PushItemWidth(ImGui.GetContentRegionAvailX()-__indent);
-		if(ImGui.BeginCombo("",emitter_selected.distribution,ImGuiComboFlags.None)){
+		if(ImGui.BeginCombo("",emitter_selected.distribution.name,ImGuiComboFlags.None)){
 			for (var __n = 0; __n < array_length(emitter_distributions); __n++){
-				var __is_selected = (emitter_selected.distribution == emitter_distributions[__n]);
-				if (ImGui.Selectable(emitter_distributions[__n], __is_selected)){
+				var __is_selected = (emitter_selected.distribution.key == emitter_distributions[__n].key);
+				if (ImGui.Selectable(emitter_distributions[__n].name, __is_selected)){
 					emitter_selected.distribution = emitter_distributions[__n];
 				}
 				if (__is_selected){

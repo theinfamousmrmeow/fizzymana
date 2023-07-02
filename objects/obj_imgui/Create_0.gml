@@ -14,9 +14,10 @@ try {
 }
 
 init_emitter_layers(ParticleSystem1);
-
-emitter_selected = global.emitter_layers[0];
 emitter_dummy = new EmitterLayer();
+emitter_selected = array_length(global.emitter_layers)>0
+				   ? global.emitter_layers[0]
+				   : emitter_dummy;
 emitter_dummy.layer_id = -1;
 
 emitter_shapes			= EmitterLayer.emitter_shapes

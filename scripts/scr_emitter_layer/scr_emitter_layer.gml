@@ -7,46 +7,46 @@ function EmitterLayer(_emitter = undefined) constructor{
 	
 	//Emitter
 	static emitter_shapes = [
-		"Diamond",
-		"Ellipse",
-		"Line",
-		"Rectangle"
+		{key:0, name:"Diamond",	 value:0},
+		{key:1, name:"Ellipse",	 value:1},
+		{key:2, name:"Line",	 value:2},
+		{key:3, name:"Rectangle",value:3}
 	]
 	
 	static emitter_distributions = [
-		"Linear",
-		"Gaussian",
-		"Inverse Gaussian"
+		{key:0, name:"Linear",			value:0},
+		{key:1, name:"Gaussian",		value:1},
+		{key:2, name:"Inverse Gaussian",value:2}
 	]
 	
 	 //Particle Shape Values
 	static part_shape_items = [
-		"Pixel",
-		"Disk",
-		"Square",
-		"Line",
-		"Star",
-		"Circle",
-		"Ring",
-		"Sphere",
-		"Flare",
-		"Spark",
-		"Explosion",
-		"Cloud",
-		"Smoke",
-		"Snow",
-		"Sprite"
+		{key:0,  name:"Pixel",	  value:0},
+		{key:1,  name:"Disk",	  value:1},
+		{key:2,  name:"Square",	  value:2},
+		{key:3,  name:"Line",	  value:3},
+		{key:4,  name:"Star",	  value:4},
+		{key:5,  name:"Circle",	  value:5},
+		{key:6,  name:"Ring",	  value:6},
+		{key:7,  name:"Sphere",	  value:7},
+		{key:8,  name:"Flare",	  value:8},
+		{key:9,  name:"Spark",	  value:9},
+		{key:10, name:"Explosion",value:10},
+		{key:11, name:"Cloud",	  value:11},
+		{key:12, name:"Smoke",	  value:12},
+		{key:13, name:"Snow",	  value:13},
+		{key:-1, name:"Sprite",	  value:-1}//always last
 	]
 	// Additive
 	static part_additive_items = [
-		"no",
-		"yes"
+		{key:0, name:"no",  value: false},
+		{key:1, name: "yes",value: true }
 	]
 	
 	//Color Types
 	static part_color_type_items = [
-		"Gradient",
-		"Mix"
+		{key:0, name:"Gradient",value: "Gradient"},
+		{key:1, name:"Mix",		value: "Mix"	 }
 	]
 	
 	//Emitter Information
@@ -54,9 +54,9 @@ function EmitterLayer(_emitter = undefined) constructor{
 	name	 = _emitter!=undefined?_emitter.name: string("Emitter_{0}", layer_id);
 	width	 = _emitter!=undefined?_emitter.xmin-_emitter.xmax: 96.000;
 	height	 = _emitter!=undefined?_emitter.ymin-_emitter.ymax: 96.000;
-	shape	 = _emitter!=undefined?_emitter.shape: "Ellipse";
+	shape	 = _emitter!=undefined?emitter_shapes[_emitter.shape]: emitter_shapes[0];
 	stream	 = _emitter!=undefined?_emitter.mode: true;
-	distribution	= _emitter!=undefined?_emitter.distribution: "Linear";
+	distribution	= _emitter!=undefined?emitter_distributions[_emitter.distribution]: emitter_distributions[0];
 	particle_count	= _emitter!=undefined?_emitter.number: 1;
 
 	//Sprite Information
@@ -73,9 +73,14 @@ function EmitterLayer(_emitter = undefined) constructor{
 	sprite_random_frame = _emitter!=undefined?_emitter.parttype.random	: false;
 
 	//Particle Alpha Values
-	part_shape = _emitter!=undefined? _emitter.parttype.shape
-									: "Pixel";
-									
+	part_shape = part_shape_items[
+		_emitter!=undefined
+		? (_emitter.parttype.shape==-1
+			?array_length(part_shape_items)-1 
+			: _emitter.parttype.shape
+		  )
+		: 7
+	];
 	part_alpha_min = _emitter!=undefined?_emitter.parttype.alpha1 : random_range(0.000,1.000);
 	part_alpha_mid = _emitter!=undefined?_emitter.parttype.alpha2 : random_range(0.000,1.000);
 	part_alpha_max = _emitter!=undefined?_emitter.parttype.alpha3 : random_range(0.000,1.000);
@@ -117,8 +122,8 @@ function EmitterLayer(_emitter = undefined) constructor{
 	part_gravity_direction	= _emitter!=undefined?_emitter.parttype.grav_dir	   : random_range(0.000,359.000);
 
 	// Particle Colors
-	part_additive	= _emitter!=undefined?_emitter.parttype.additive : "No";
-	part_color_type = "Gradient"; //?
+	part_additive	= _emitter!=undefined?part_additive_items[_emitter.parttype.additive]: part_additive_items[false];
+	part_color_type = part_color_type_items[0]; //?
 	part_color_a = _emitter!=undefined?_emitter.parttype.color1 : irandom_range(c_white,c_black)//color a and color start
 	part_color_b = _emitter!=undefined?_emitter.parttype.color2 : irandom_range(c_white,c_black)//color b and color middle
 	part_color_c = _emitter!=undefined?_emitter.parttype.color3 : irandom_range(c_white,c_black)//color end
