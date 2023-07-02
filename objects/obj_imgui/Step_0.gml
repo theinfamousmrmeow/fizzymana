@@ -631,7 +631,7 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 					
 			//Particle Color A Editor
 			ImGui.NewLine()
-			ImGui.Text(emitter_selected.part_shape == "Gradient"? "Color Start": "Color A");
+			ImGui.Text(emitter_selected.part_color_type.name == "Gradient"? "Color Start": "Color A");
 			ImGui.SameLine();
 			ImGui.PushID("ColorAValueRandomize");
 				if (ImGui.SmallButton("random")){
@@ -646,7 +646,7 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 					
 			//Particle Color B Editor
 			ImGui.NewLine()
-			ImGui.Text(emitter_selected.part_shape == "Gradient"? "Color Middle": "Color B");
+			ImGui.Text(emitter_selected.part_color_type.name == "Gradient"? "Color Middle": "Color B");
 			ImGui.SameLine();
 			ImGui.PushID("ColorBValueRandomize");
 				if (ImGui.SmallButton("random")){
@@ -659,7 +659,7 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 			ImGui.PopID();
 			ImGui.Unindent();
 			
-			if(emitter_selected.part_shape == "Gradient"){
+			if(emitter_selected.part_color_type.name == "Gradient"){
 				//Particle Color C Editor
 				ImGui.NewLine()
 				ImGui.Text("Color End");
@@ -836,6 +836,21 @@ ImGui.Begin("Emitter Information", undefined, ImGuiWindowFlags.None, ImGuiReturn
 		ImGui.PopItemWidth();
 	ImGui.PopID();
 	ImGui.Unindent();
+	
+	ImGui.NewLine();
+	ImGui.Text("Stream Particles");
+	ImGui.Indent(__indent);
+	ImGui.PushID("EmitterStreamParticles");
+		emitter_selected.stream = ImGui.Checkbox("",emitter_selected.stream)
+	ImGui.PopID();
+	
+	ImGui.PushID("EmitterBurst");
+		if (ImGui.Button("Burst",ImGui.GetContentRegionAvailX()-__indent)){
+			show_message("Bursting everywhere.")
+		};
+	ImGui.PopID();
+	ImGui.Unindent();
+	
 	ImGui.EndDisabled()
 
 ImGui.End();

@@ -55,7 +55,8 @@ function EmitterLayer(_emitter = undefined) constructor{
 	width	 = _emitter!=undefined?_emitter.xmin-_emitter.xmax: 96.000;
 	height	 = _emitter!=undefined?_emitter.ymin-_emitter.ymax: 96.000;
 	shape	 = _emitter!=undefined?emitter_shapes[_emitter.shape]: emitter_shapes[0];
-	stream	 = _emitter!=undefined?_emitter.mode: true;
+	if(_emitter!=undefined)show_debug_message(bool(_emitter.mode))
+	stream	 = _emitter!=undefined? !bool(_emitter.mode): true;
 	distribution	= _emitter!=undefined?emitter_distributions[_emitter.distribution]: emitter_distributions[0];
 	particle_count	= _emitter!=undefined?_emitter.number: 1;
 
