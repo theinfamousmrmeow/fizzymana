@@ -1,82 +1,159 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+global.emitter_layers = [];
+/**
+ * Function Description
+ * @param {Struct} [_emitter] Description
+ */
 function EmitterLayer(_emitter = undefined) constructor{
 	
+	//Emitter
+	static emitter_shapes = [
+		"Diamond",
+		"Ellipse",
+		"Line",
+		"Rectangle"
+	]
+	
+	static emitter_distributions = [
+		"Linear",
+		"Gaussian",
+		"Inverse Gaussian"
+	]
+	
+	 //Particle Shape Values
+	static part_shape_items = [
+		"Pixel",
+		"Disk",
+		"Square",
+		"Line",
+		"Star",
+		"Circle",
+		"Ring",
+		"Sphere",
+		"Flare",
+		"Spark",
+		"Explosion",
+		"Cloud",
+		"Smoke",
+		"Snow",
+		"Sprite"
+	]
+	// Additive
+	static part_additive_items = [
+		"no",
+		"yes"
+	]
+	
+	//Color Types
+	static part_color_type_items = [
+		"Gradient",
+		"Mix"
+	]
+	
 	//Emitter Information
-	name ="Emitter_1"
-	width = 96.000
-	height = 96.000
-	shape = "Ellipse"
-	distribution = "Linear"
-	particle_count = 1
-	stream = true
-
-	//Particle Shape Values
-	shape_selected = shape_items[0];
+	layer_id = get_id_free();
+	name	 = _emitter!=undefined?_emitter.name: string("Emitter_{0}", layer_id);
+	width	 = _emitter!=undefined?_emitter.xmin-_emitter.xmax: 96.000;
+	height	 = _emitter!=undefined?_emitter.ymin-_emitter.ymax: 96.000;
+	shape	 = _emitter!=undefined?_emitter.shape: "Ellipse";
+	stream	 = _emitter!=undefined?_emitter.mode: true;
+	distribution	= _emitter!=undefined?_emitter.distribution: "Linear";
+	particle_count	= _emitter!=undefined?_emitter.number: 1;
 
 	//Sprite Information
-	sprite_file = undefined;
-	sprite_subframe_val = 0;
-	sprite_remove_background = true;
-	sprite_smooth = true;
-	sprite_x_origin = 0;
-	sprite_y_origin = 0;
+	sprite_file		= undefined; //??
+	sprite_subframe = _emitter!=undefined?_emitter.parttype.frame: 0;
+	sprite_smooth	= true; //??
+	sprite_x_origin = 0; //??
+	sprite_y_origin = 0; //??
+	sprite_remove_background = true; //??
 
 	//Sprite Particle Information
-	sprite_animated = false;
-	sprite_stretched = false;
-	sprite_random_frame = false;
+	sprite_animated		= _emitter!=undefined?_emitter.parttype.animate	: false;
+	sprite_stretched	= _emitter!=undefined?_emitter.parttype.stretch	: false;
+	sprite_random_frame = _emitter!=undefined?_emitter.parttype.random	: false;
 
 	//Particle Alpha Values
-	part_alpha_min = random_range(0.000,1.000);
-	part_alpha_mid = random_range(0.000,1.000);
-	part_alpha_max = random_range(0.000,1.000);
+	part_shape = _emitter!=undefined? _emitter.parttype.shape
+									: "Pixel";
+									
+	part_alpha_min = _emitter!=undefined?_emitter.parttype.alpha1 : random_range(0.000,1.000);
+	part_alpha_mid = _emitter!=undefined?_emitter.parttype.alpha2 : random_range(0.000,1.000);
+	part_alpha_max = _emitter!=undefined?_emitter.parttype.alpha3 : random_range(0.000,1.000);
 
 	//Particle Size Values
-	part_size_min		= random_range(-5.000,5.000);
-	part_size_max		= random_range(-5.000,5.000);
-	part_size_increase	= random_range(-5.000,5.000);
-	part_size_wobble	= random_range(-5.000,5.000);
+	part_size_min		= _emitter!=undefined?_emitter.parttype.size_min    : random_range(-5.000,5.000);
+	part_size_max		= _emitter!=undefined?_emitter.parttype.size_max    : random_range(-5.000,5.000);
+	part_size_increase	= _emitter!=undefined?_emitter.parttype.size_incr   : random_range(-5.000,5.000);
+	part_size_wobble	= _emitter!=undefined?_emitter.parttype.size_wiggle : random_range(-5.000,5.000);
 
 	//Particle Scale Values
-	part_scale_h = random_range(0.000,5.000);
-	part_scale_v = random_range(0.000,5.000);
+	part_scale_h = _emitter!=undefined?_emitter.parttype.alpha1 : random_range(0.000,5.000);
+	part_scale_v = _emitter!=undefined?_emitter.parttype.alpha1 : random_range(0.000,5.000);
 
 	//Particle Lifetime Values
-	part_lifetime_min = random_range(0.000,300.000);
-	part_lifetime_max = random_range(0.000,300.000);
+	part_lifetime_min = _emitter!=undefined?_emitter.parttype.life_min : random_range(0.000,300.000);
+	part_lifetime_max = _emitter!=undefined?_emitter.parttype.life_max : random_range(0.000,300.000);
 
 	//Particle Speed Values
-	part_speed_min		= random_range(-5.000,5.000);
-	part_speed_max		= random_range(-5.000,5.000);
-	part_speed_increase	= random_range(-5.000,5.000);
-	part_speed_wobble	= random_range(-5.000,5.000);
+	part_speed_min		= _emitter!=undefined?_emitter.parttype.speed_min	: random_range(-5.000,5.000);
+	part_speed_max		= _emitter!=undefined?_emitter.parttype.speed_max	: random_range(-5.000,5.000);
+	part_speed_increase	= _emitter!=undefined?_emitter.parttype.speed_incr	: random_range(-5.000,5.000);
+	part_speed_wobble	= _emitter!=undefined?_emitter.parttype.speed_wiggle : random_range(-5.000,5.000);
 
 	//Particle Direction Values
-	part_direction_min		= random_range(0.000,359.000);
-	part_direction_max		= random_range(0.000,359.000);
-	part_direction_increase	= random_range(-5.000,5.000);
-	part_direction_wobble	= random_range(-5.000,5.000);
+	part_direction_min		= _emitter!=undefined?_emitter.parttype.dir_min    : random_range(0.000,359.000);
+	part_direction_max		= _emitter!=undefined?_emitter.parttype.dir_max    : random_range(0.000,359.000);
+	part_direction_increase	= _emitter!=undefined?_emitter.parttype.dir_incr	  : random_range(-5.000,5.000);
+	part_direction_wobble	= _emitter!=undefined?_emitter.parttype.dir_wiggle : random_range(-5.000,5.000);
 
 	//Particle Orientation Values
-	part_orientation_min		= random_range(0.000,359.000);
-	part_orientation_max		= random_range(0.000,359.000);
-	part_orientation_increase	= random_range(-5.000,5.000);
-	part_orientation_wobble		= random_range(-5.000,5.000);
+	part_orientation_min		= _emitter!=undefined?_emitter.parttype.ang_min	  : random_range(0.000,359.000);
+	part_orientation_max		= _emitter!=undefined?_emitter.parttype.ang_max	  : random_range(0.000,359.000);
+	part_orientation_increase	= _emitter!=undefined?_emitter.parttype.ang_inc	  : random_range(-5.000,5.000);
+	part_orientation_wobble		= _emitter!=undefined?_emitter.parttype.ang_wiggle : random_range(-5.000,5.000);
 
 	//Particle Gravity Values
-	part_gravity_amount		= random_range(0.000,15.000);
-	part_gravity_direction	= random_range(0.000,359.000);
+	part_gravity_amount		= _emitter!=undefined?_emitter.parttype.grav_amount : random_range(0.000,15.000);
+	part_gravity_direction	= _emitter!=undefined?_emitter.parttype.grav_dir	   : random_range(0.000,359.000);
 
 	// Particle Colors
-	// Additive
-	part_additive = "No";
-
-	//Color Types
-	part_color_type = "Gradient";
-
-	part_color_a = irandom_range(c_white,c_black)//color a and color start
-	part_color_b = irandom_range(c_white,c_black)//color b and color middle
-	part_color_c = irandom_range(c_white,c_black)//color end
+	part_additive	= _emitter!=undefined?_emitter.parttype.additive : "No";
+	part_color_type = "Gradient"; //?
+	part_color_a = _emitter!=undefined?_emitter.parttype.color1 : irandom_range(c_white,c_black)//color a and color start
+	part_color_b = _emitter!=undefined?_emitter.parttype.color2 : irandom_range(c_white,c_black)//color b and color middle
+	part_color_c = _emitter!=undefined?_emitter.parttype.color3 : irandom_range(c_white,c_black)//color end
 	
+}
+
+/**
+ * Function Description
+ * @param {Asset.GMParticleSystem} _particle_system
+ * @returns {Array<Struct.EmitterLayer>}
+ */
+function init_emitter_layers(_particle_system){
+	var __part_info = particle_get_info(ParticleSystem1)
+	var __emitters = __part_info.emitters;
+	var __emitter_count = array_length(__emitters)
+	for(var __i = 0; __i< __emitter_count; __i++){
+		show_debug_message(json_stringify(__emitters[__i]))
+		var __new_layer = new EmitterLayer(__emitters[__i]);
+		array_push(global.emitter_layers, __new_layer)	
+	}
+}
+
+function get_id_free(){
+	var __layer_id = 1;
+	var __id_found = true
+	var __emitter_count = array_length(global.emitter_layers);
+	while(__id_found){
+		__id_found = false;
+		for(var __i = 0; __i<__emitter_count; __i++){
+			if(global.emitter_layers[__i].layer_id == __layer_id){
+				__id_found = true;
+				break;
+			}
+		}	
+		if(!__id_found) return __layer_id;
+		__layer_id++;
+	}
 }
