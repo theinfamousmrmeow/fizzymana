@@ -117,14 +117,15 @@ ImGui.Begin("Particle Information", particle_info_open, ImGuiWindowFlags.None);
 				ImGui.PushID("SpriteSmooth");
 					sprite_smooth = ImGui.Checkbox("Smooth", sprite_smooth);
 				ImGui.PopID();
-						
+				var _col_width = ImGui.GetContentRegionAvailX()-__indent;
 				if (ImGui.BeginTable("table_test", 2,ImGuiTableFlags.SizingFixedFit)) {
+					
 					ImGui.TableSetupColumn("");
 					ImGui.TableSetupColumn("");
 					ImGui.TableNextRow();
 							
 					ImGui.TableSetColumnIndex(0);
-					ImGui.PushItemWidth((ImGui.GetContentRegionAvailX()/2)-(__indent/2));
+					ImGui.PushItemWidth(_col_width/2);
 					ImGui.PushID("XOrigin");
 					sprite_x_origin = ImGui.SliderInt("",sprite_x_origin,0,64)
 					ImGui.Text("X Origin");
@@ -132,7 +133,7 @@ ImGui.Begin("Particle Information", particle_info_open, ImGuiWindowFlags.None);
 					ImGui.PopItemWidth();
 							
 					ImGui.TableSetColumnIndex(1);
-					ImGui.PushItemWidth((ImGui.GetContentRegionAvailX()/2)-(__indent/2));
+					ImGui.PushItemWidth(_col_width/2);
 					ImGui.PushID("YOrigin");
 					sprite_y_origin = ImGui.SliderInt("",sprite_y_origin,0,64)
 					ImGui.Text("Y Origin");
