@@ -1,16 +1,21 @@
 {
   "FolderOrderSettings": [
-    {"name":"Example","order":1,"path":"folders/Example.yy",},
+    {"name":"Fizzy Mana","order":1,"path":"folders/Fizzy Mana.yy",},
     {"name":"ImGui_GM","order":2,"path":"folders/ImGui_GM.yy",},
+    {"name":"Sprites","order":5,"path":"folders/Fizzy Mana/Sprites.yy",},
+    {"name":"Objects","order":6,"path":"folders/Fizzy Mana/Objects.yy",},
+    {"name":"Scripts","order":7,"path":"folders/Fizzy Mana/Scripts.yy",},
+    {"name":"Rooms","order":8,"path":"folders/Fizzy Mana/Rooms.yy",},
+    {"name":"Example","order":4,"path":"folders/Example.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"ImGui_GM","order":1,"path":"extensions/ImGui_GM/ImGui_GM.yy",},
-    {"name":"shdImGui","order":3,"path":"shaders/shdImGui/shdImGui.yy",},
-    {"name":"objExample2","order":4,"path":"objects/objExample2/objExample2.yy",},
     {"name":"rmExample","order":1,"path":"rooms/rmExample/rmExample.yy",},
+    {"name":"shdImGui","order":3,"path":"shaders/shdImGui/shdImGui.yy",},
     {"name":"sprExample","order":2,"path":"sprites/sprExample/sprExample.yy",},
     {"name":"ImGui_Misc","order":2,"path":"scripts/ImGui_Misc/ImGui_Misc.yy",},
     {"name":"ParticleSystem1","order":3,"path":"particles/ParticleSystem1/ParticleSystem1.yy",},
     {"name":"sprExample2","order":3,"path":"sprites/sprExample2/sprExample2.yy",},
+    {"name":"objExample","order":1,"path":"objects/objExample/objExample.yy",},
   ],
 }

@@ -3,14 +3,6 @@ if (enable_docking) viewport_dock = ImGui.DockSpaceOverViewport(ImGuiDockNodeFla
 var __main_width = window_get_width();
 var __main_height = window_get_height();
 
-#region Setup
-if (!surface_exists(surf)) {
-	surf = surface_create(128, 128);
-	surface_set_target(surf);
-	draw_clear_alpha(c_lime, 0.25);
-	surface_reset_target();
-}
-#endregion
 #region Menu Bar
 var exit_modal = false;
 ImGui.BeginMainMenuBar();
@@ -52,7 +44,7 @@ var __part_info_view_height =__main_height-19;
 
 ImGui.SetNextWindowSize(_part_info_view_width, __part_info_view_height, ImGuiCond.Once);
 ImGui.SetNextWindowPos(__main_width-_part_info_view_width,19,ImGuiCond.Once);
-ImGui.Begin("Particle Information", particle_info_open, ImGuiWindowFlags.None);
+ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 
 	if (ImGui.BeginTabBar("ParticleOptionsTabBar")){
 		var __indent = 20;
@@ -713,7 +705,7 @@ var __emitter_view_width = __main_width/5;
 var __emitter_view_height = __main_height-19;
 ImGui.SetNextWindowSize(__emitter_view_width, __emitter_view_height, ImGuiCond.Once);
 ImGui.SetNextWindowPos(0,19,ImGuiCond.Once);
-ImGui.Begin("Emitter Information", particle_info_open, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
+ImGui.Begin("Emitter Information", undefined, ImGuiWindowFlags.None, ImGuiReturnMask.Both);
 	//if ImGui.IsWindowDocked() show_message(ImGui.GetWindowDockID());
 	ImGui.Text("Emitters");
 	var __list_width = ImGui.GetContentRegionAvailX();

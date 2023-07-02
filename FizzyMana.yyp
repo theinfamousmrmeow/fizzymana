@@ -11,8 +11,13 @@
   },
   "defaultScriptType": 1,
   "Folders": [
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Example","folderPath":"folders/Example.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Fizzy Mana","folderPath":"folders/Fizzy Mana.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ImGui_GM","folderPath":"folders/ImGui_GM.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Fizzy Mana/Sprites.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Fizzy Mana/Objects.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/Fizzy Mana/Scripts.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Fizzy Mana/Rooms.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Example","folderPath":"folders/Example.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LICENSE.txt","CopyToMask":-1,"filePath":"datafiles/fonts",},
@@ -27,17 +32,20 @@
   },
   "resources": [
     {"id":{"name":"ImGui_GM","path":"extensions/ImGui_GM/ImGui_GM.yy",},},
-    {"id":{"name":"shdImGui","path":"shaders/shdImGui/shdImGui.yy",},},
-    {"id":{"name":"objExample2","path":"objects/objExample2/objExample2.yy",},},
     {"id":{"name":"rmExample","path":"rooms/rmExample/rmExample.yy",},},
+    {"id":{"name":"shdImGui","path":"shaders/shdImGui/shdImGui.yy",},},
+    {"id":{"name":"obj_imgui","path":"objects/obj_imgui/obj_imgui.yy",},},
+    {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"id":{"name":"sprExample","path":"sprites/sprExample/sprExample.yy",},},
     {"id":{"name":"ImGui_Misc","path":"scripts/ImGui_Misc/ImGui_Misc.yy",},},
     {"id":{"name":"ParticleSystem1","path":"particles/ParticleSystem1/ParticleSystem1.yy",},},
+    {"id":{"name":"scr_emitter_layer","path":"scripts/scr_emitter_layer/scr_emitter_layer.yy",},},
     {"id":{"name":"ImGui","path":"scripts/ImGui/ImGui.yy",},},
     {"id":{"name":"sprExample2","path":"sprites/sprExample2/sprExample2.yy",},},
     {"id":{"name":"objExample","path":"objects/objExample/objExample.yy",},},
   ],
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"roomId":{"name":"rmExample","path":"rooms/rmExample/rmExample.yy",},},
   ],
   "TextureGroups": [
