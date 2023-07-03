@@ -166,6 +166,49 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 					emitter_selected.sprite_random_frame	=ImGui.Checkbox("Random Frame", emitter_selected.sprite_random_frame);
 				ImGui.PopID();
 				ImGui.Unindent();
+				
+				if (ImGui.BeginTable("table_preview", 1,ImGuiTableFlags.SizingMask_,ImGui.GetContentRegionAvailX(),ImGui.GetContentRegionAvailY())) {
+					var __padding = 10;
+					var _col_height = (ImGui.GetContentRegionAvailY()/2)-__padding;
+					var _col_width = ImGui.GetContentRegionAvailX()-__padding;
+					ImGui.TableSetupColumn("Preview");
+					ImGui.TableNextRow(ImGuiTableRowFlags.None,_col_height+10);
+					ImGui.TableNextRow(ImGuiTableRowFlags.None,_col_height);
+					ImGui.TableSetColumnIndex(0);
+					ImGui.Indent(__padding);
+					ImGui.SetNextWindowSize(_col_width, _col_height, ImGuiCond.Always);
+					ImGui.Begin("Sprite Preview",undefined, ImGuiWindowFlags.ChildWindow|ImGuiWindowFlags.NoResize|ImGuiWindowFlags.NoCollapse,ImGuiReturnMask.Both);
+					
+						var __surf_width = surface_get_width(surf)
+						var __surf_height = surface_get_height(surf)
+						if(__surf_width!=ImGui.GetContentRegionAvailX()&&ImGui.GetContentRegionAvailX()>5){
+							surface_resize(surf,ImGui.GetContentRegionAvailX(),__surf_height)
+						}
+						if(__surf_height!=ImGui.GetContentRegionAvailY()&&ImGui.GetContentRegionAvailY()>5){
+							surface_resize(surf,__surf_width,ImGui.GetContentRegionAvailY())
+						}
+
+						surface_set_target(surf);
+
+						//var xx = ImGui.GetCursorScreenPosX();
+						//var yy = ImGui.GetCursorScreenPosY();
+						//window_mouse_get_x() - xx
+						//window_mouse_get_y() - yy
+						draw_clear_alpha(c_dkgray, 0.25);
+						draw_sprite(
+							emitter_selected.sprite,
+							0,
+							ImGui.GetContentRegionAvailX()/2,
+							ImGui.GetContentRegionAvailY()/2
+						)
+						surface_reset_target();
+						//if ImGui.IsWindowDocked() show_message(ImGui.GetWindowDockID());
+						ImGui.Surface(surf, c_white, c_white, ImGui.GetContentRegionAvailX(),ImGui.GetContentRegionAvailY())
+					ImGui.End();
+					ImGui.Unindent();
+					ImGui.EndTable();	
+				}
+				
 			}
             ImGui.EndTabItem();
         }
@@ -730,52 +773,6 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
             ImGui.EndTabItem();
         }
 		ImGui.EndTabBar();
-		
-		#region Particle Preview
-		if(emitter_selected.part_shape.name=="Sprite"){
-			if (ImGui.BeginTable("table_preview", 1,ImGuiTableFlags.SizingMask_,ImGui.GetContentRegionAvailX(),ImGui.GetContentRegionAvailY())) {
-				var __padding = 10;
-				var _col_height = (ImGui.GetContentRegionAvailY()/2)-__padding;
-				var _col_width = ImGui.GetContentRegionAvailX()-__padding;
-				ImGui.TableSetupColumn("Preview");
-				ImGui.TableNextRow(ImGuiTableRowFlags.None,_col_height+10);
-				ImGui.TableNextRow(ImGuiTableRowFlags.None,_col_height);
-				ImGui.TableSetColumnIndex(0);
-				ImGui.Indent(__padding);
-				ImGui.SetNextWindowSize(_col_width, _col_height, ImGuiCond.Always);
-				ImGui.Begin("Sprite Preview",undefined, ImGuiWindowFlags.ChildWindow|ImGuiWindowFlags.NoResize|ImGuiWindowFlags.NoCollapse,ImGuiReturnMask.Both);
-					
-					var __surf_width = surface_get_width(surf)
-					var __surf_height = surface_get_height(surf)
-					if(__surf_width!=ImGui.GetContentRegionAvailX()&&ImGui.GetContentRegionAvailX()>5){
-						surface_resize(surf,ImGui.GetContentRegionAvailX(),__surf_height)
-					}
-					if(__surf_height!=ImGui.GetContentRegionAvailY()&&ImGui.GetContentRegionAvailY()>5){
-						surface_resize(surf,__surf_width,ImGui.GetContentRegionAvailY())
-					}
-
-					surface_set_target(surf);
-
-					//var xx = ImGui.GetCursorScreenPosX();
-					//var yy = ImGui.GetCursorScreenPosY();
-					//window_mouse_get_x() - xx
-					//window_mouse_get_y() - yy
-					draw_clear_alpha(c_dkgray, 0.25);
-					draw_sprite(
-						emitter_selected.sprite,
-						0,
-						ImGui.GetContentRegionAvailX()/2,
-						ImGui.GetContentRegionAvailY()/2
-					)
-					surface_reset_target();
-					//if ImGui.IsWindowDocked() show_message(ImGui.GetWindowDockID());
-					ImGui.Surface(surf, c_white, c_white, ImGui.GetContentRegionAvailX(),ImGui.GetContentRegionAvailY())
-				ImGui.End();
-				ImGui.Unindent();
-				ImGui.EndTable();	
-			}
-		}
-
     }
 ImGui.End();
 #endregion
