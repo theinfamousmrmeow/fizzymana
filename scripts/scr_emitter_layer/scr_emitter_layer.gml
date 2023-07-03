@@ -62,10 +62,13 @@ function EmitterLayer(_emitter = undefined) constructor{
 
 	//Sprite Information
 	sprite_file		= undefined; //??
+	sprite			= _emitter!=undefined?_emitter.parttype.sprite: undefined;
 	sprite_subframe = _emitter!=undefined?_emitter.parttype.frame: 0;
 	sprite_smooth	= true; //??
-	sprite_x_origin = 0; //??
-	sprite_y_origin = 0; //??
+	sprite_x_origin = sprite!=undefined?sprite_get_xoffset(sprite): 0;
+	sprite_y_origin = sprite!=undefined?sprite_get_yoffset(sprite): 0;
+	sprite_hsize	= sprite!=undefined?sprite_get_width(sprite)  : 0;
+	sprite_vsize	= sprite!=undefined?sprite_get_height(sprite) : 0;
 	sprite_remove_background = true; //??
 
 	//Sprite Particle Information

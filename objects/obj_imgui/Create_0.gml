@@ -35,3 +35,4 @@ export_items = [
 ]
 export_selected = export_items[0];
 export_destination = undefined;
+surf = -1; 
