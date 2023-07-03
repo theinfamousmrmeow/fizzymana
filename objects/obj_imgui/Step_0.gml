@@ -128,7 +128,12 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 					ImGui.TableSetColumnIndex(0);
 					ImGui.PushItemWidth(_col_width/2);
 					ImGui.PushID("XOrigin");
-					emitter_selected.sprite_x_origin = ImGui.SliderInt("",emitter_selected.sprite_x_origin,0,64)
+					var __curr_xoffset = sprite_get_xoffset(emitter_selected.sprite)
+					var __curr_yoffset = sprite_get_yoffset(emitter_selected.sprite)
+					emitter_selected.sprite_x_origin = ImGui.SliderInt("",emitter_selected.sprite_x_origin,0,emitter_selected.sprite_hsize)
+					if(emitter_selected.sprite_x_origin!=__curr_xoffset){
+						sprite_set_offset(emitter_selected.sprite,emitter_selected.sprite_x_origin,__curr_yoffset)
+					}
 					ImGui.Text("X Origin");
 					ImGui.PopID()
 					ImGui.PopItemWidth();
@@ -136,7 +141,10 @@ ImGui.Begin("Particle Information", undefined, ImGuiWindowFlags.None);
 					ImGui.TableSetColumnIndex(1);
 					ImGui.PushItemWidth(_col_width/2);
 					ImGui.PushID("YOrigin");
-					emitter_selected.sprite_y_origin = ImGui.SliderInt("",emitter_selected.sprite_y_origin,0,64)
+					emitter_selected.sprite_y_origin = ImGui.SliderInt("",emitter_selected.sprite_y_origin,0,emitter_selected.sprite_vsize)
+					if(emitter_selected.sprite_y_origin!=__curr_yoffset){
+						sprite_set_offset(emitter_selected.sprite,__curr_xoffset,emitter_selected.sprite_y_origin)
+					}
 					ImGui.Text("Y Origin");
 					ImGui.PopID()
 					ImGui.PopItemWidth();
